@@ -1,0 +1,20 @@
+//making a class
+class student{
+    name ;
+    age ;
+    fill = (name,age) => {
+       this.name = name;
+       this.age = age;  
+    } 
+    getdetails = ()=>{
+        console.log(`Hi! ${this.name} and your age is ${this.age}`);
+    }
+}
+//making an object, jab humne new keyword ka use kiya; we are making an object from the class
+const student1 = new student();
+student1.fill("rahul",22);
+student1.getdetails();
+
+const student2 = new student();
+student2.fill("udayan",17);
+student2.getdetails();
