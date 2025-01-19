@@ -1,25 +1,27 @@
-//event bubbling is the process that happens when we click the nested elements 
-
-//if we click an element which is nested deeply, sabse pehle humne click kiya hai upar vale ko then usse niche vale ko then usse bhi niche vale ko
-
 const div = document.querySelector("div");
 const ul = document.querySelector("ul");
-const lis = document.querySelectorAll("li");
+const lis = document.querySelectorAll("li") //this returns a nodelist
 
-div.addEventListener("click",()=>{
-    console.log("div is clicked")
+div.addEventListener("click",function(event){
+    event.stopPropagation(); //to stop the event bubbling process
+    console.log("div was clicked");
 })
 
 ul.addEventListener("click",(event)=>{
-    event.stopPropagation(); //to stop event bubling 
-    console.log("ul is clicked");
+    event.stopPropagation(); //to stop the event bubbling process
+    console.log("ul was clicked");
 })
 
-for(let i=0 ;i<lis.length;i++){
-    lis[i].addEventListener("click",()=>{
-        event.stopPropagation(); //to stop event bubbling 
-        console.log("li is clicked")
+for(let li of lis){
+    li.addEventListener("click",(event)=>{
+        event.stopPropagation(); //to stop the event bubbling process
+        console.log("li was clicked");
     })
 }
 
-//to stop event bubbling we have a method of event obj to stop progation
+
+//event bubbling means when in nested elements when the last element element is clicked then the upper elements are also clicked
+
+//li -> ul -> div 
+
+//niche se upar like a bubble
